@@ -5,6 +5,8 @@
 ## 📌 概要 (Overview)
 このプロジェクトは、統計力学における「ランダムウォーク（酔歩）モデル」を用いて、現実の株価チャートに類似した疑似株価チャートを生成し、実際の市場データと比較・検証するPythonシミュレーターです。
 <img width="1044" height="377" alt="スクリーンショット 2026-02-22 3 50 55" src="https://github.com/user-attachments/assets/8d8388e4-be2d-4a25-b476-b86da2ffccaa" />
+<img width="1044" height="428" alt="スクリーンショット 2026-02-22 3 51 23" src="https://github.com/user-attachments/assets/b1dea031-7626-4aa7-bacc-4502c31c49c2" />
+
 **※ 本プロジェクトは機械学習（未来予測AI）ではありません。**
 本格的な機械学習モデルを構築する「前段階」の検証として、株価のミクロな変動（ノイズ）が、純粋なコイントス（50%の確率）と同等のデタラメな振る舞いをしていることを視覚的に証明することを目的としています。
 
@@ -20,5 +22,3 @@
 
 ```bash
 pip install numpy matplotlib yfinance
-<img width="1044" height="377" alt="スクリーンショット 2026-02-22 3 50 55" src="https://github.com/user-attachments/assets/8d8388e4-be2d-4a25-b476-b86da2ffccaa" />
-![株価チャート](https://github.com/user-attachments/assets/b1dea031-7626-4aa7-bacc-4502c31c49c2)

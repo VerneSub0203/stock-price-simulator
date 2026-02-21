@@ -1,38 +1,22 @@
 # stock-price-simulator
 自主学習(公開用)
-import numpy as np
-import matplotlib.pyplot as plt
-import yfinance as yf
+# 📈 Stock Price Random Walk Simulator
 
-print("現実の株価データをダウンロード中...")
-ticker = yf.Ticker('AAPL')
-aapl_data = ticker.history(period='4y')
+## 📌 概要 (Overview)
+このプロジェクトは、統計力学における「ランダムウォーク（酔歩）モデル」を用いて、現実の株価チャートに類似した疑似株価チャートを生成し、実際の市場データと比較・検証するPythonシミュレーターです。
 
-aapl_clean = aapl_data.dropna()
-real_prices = aapl_clean['Close'].values 
-dates = aapl_clean.index 
-days = len(real_prices)
-start_price = float(real_prices[0])
+**※ 本プロジェクトは機械学習（未来予測AI）ではありません。**
+本格的な機械学習モデルを構築する「前段階」の検証として、株価のミクロな変動（ノイズ）が、純粋なコイントス（50%の確率）と同等のデタラメな振る舞いをしていることを視覚的に証明することを目的としています。
 
-daily_volatility = np.std(np.diff(real_prices)) 
-steps = np.random.choice([daily_volatility, -daily_volatility], size=days)
-pseudo_prices = start_price + np.cumsum(steps)
+## ✨ 特徴 (Features)
+* **リアルデータの取得:** `yfinance` を使用し、現実の株価データ（デフォルト: Apple Inc. `AAPL`）を動的に取得。
+* **データ前処理:** 欠損値（`NaN`）の自動除去により、計算エラーを防止。
+* **ボラティリティの算出:** 現実の株価の「日々の変動幅（標準偏差）」を計算し、ランダムウォークの1ステップのサイズに適用。
+* **科学的再現性の確保:** `np.random.seed(42)` を用いて疑似乱数のシードを固定し、同一の比較結果を常に再現可能に設定。
+* **時系列の精密な可視化:** `matplotlib.dates` を用いて、x軸の日付を「年/月/日」形式で正確かつ見やすく同期・描画。
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
+## 🛠️ 必要環境 (Requirements)
+実行には以下のPythonライブラリが必要です。
 
-ax1.plot(dates, real_prices, color='green', linewidth=1.5)
-ax1.set_title("Real Stock Chart (Apple Inc. - AAPL)")
-ax1.set_ylabel("Price (USD)")
-ax1.grid(True)
-
-ax2.plot(dates, pseudo_prices, color='blue', linewidth=1.5)
-ax2.set_title("Pseudo Stock Chart (Random Walk - Seed 42)")
-ax2.set_ylabel("Price (USD)")
-ax2.grid(True)
-
-fig.autofmt_xdate()
-plt.tight_layout()
-plt.show()
-
-plt.tight_layout()
-plt.show()
+```bash
+pip install numpy matplotlib yfinance

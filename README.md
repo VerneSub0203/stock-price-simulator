@@ -20,3 +20,6 @@
 
 ```bash
 pip install numpy matplotlib yfinance
+<img width="1044" height="377" alt="スクリーンショット 2026-02-22 3 50 55" src="https://github.com/user-attachments/assets/8d8388e4-be2d-4a25-b476-b86da2ffccaa" />
+<img width="1044" height="428" alt="スクリーンショット 2026-02-22 3 51 23" src="https://github.com/user-attachments/assets/b1dea031-7626-4aa7-bacc-4502c31c49c2" />
+
